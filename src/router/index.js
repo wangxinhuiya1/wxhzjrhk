@@ -27,6 +27,9 @@ const routes = [
         component: () => import('../views/static/adCate.vue')// 懒加载
     },
     {
+        path: '/major', name: 'major', component: () => import('../views/admin/major.vue') //懒加载 
+    },
+    {
         path: '/login',
         name: 'login',
         component: () => import('../views/static/login.vue')// 懒加载
@@ -88,13 +91,13 @@ router.beforeEach((to, from, next) => {
     }
     else {
 
-        if(userStore.token&&userStore.token.length>0){
+        if (userStore.token && userStore.token.length > 0) {
             next()
         }
-        else{
-           next({name:"login"}) 
+        else {
+            next({ name: "login" })
         }
-        
+
     }
 
 

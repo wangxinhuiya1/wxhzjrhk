@@ -17,6 +17,7 @@ const adminLogin=(data)=>{
         data
    })
 }
+
 const adCatePage=(data)=>{
    return instance.request({
     url:'api/adcate/page',
@@ -54,5 +55,5 @@ export {
     adCatePage,
     adCateDelId,
     adCateAdd,
-    adCateEdit
+    adCateEdit,
 } 
