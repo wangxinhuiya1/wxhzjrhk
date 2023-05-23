@@ -65,6 +65,24 @@ const getOneClassroom = (id) => {
   });
 };
 
+
+// 获取所有建筑接口
+const getAllBuilding = () => {
+  return instance.request({
+    url: "api/building/all",
+    method: "get",
+  });
+};
+
+// 获取所有学校接口
+const getAllSchool = () => {
+  return instance.request({
+    url: "api/school/all",
+    method: "get",
+  });
+};
+
+
 export {
   userLogin,
   adminLogin2,
@@ -73,4 +91,6 @@ export {
   deleteClassroom,
   editClassroom,
   getOneClassroom,
+  getAllBuilding,
+  getAllSchool,
 };
