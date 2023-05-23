@@ -1,5 +1,5 @@
 <template>
-    <div class="copyright">
+    <div class="copyrights">
         <div class="copyright-tools">
             <el-button type="danger" @click="toAdd" round>添加</el-button>
         </div>
@@ -23,22 +23,22 @@
     <el-dialog v-model="dialogFormVisible" title="著作权编辑">
         <el-form :model="copyright">
             <el-form-item label="佐证材料" :label-width="140">
-                <el-input v-model="adCate.attachment" autocomplete="off" />
+                <el-input v-model="copyright.attachment" autocomplete="off" />
             </el-form-item>
             <el-form-item label="著作权编号" :label-width="140">
-                <el-input v-model="adCate.copyrightNo" autocomplete="off" />
+                <el-input v-model="copyright.copyrightNo" autocomplete="off" />
             </el-form-item>
             <el-form-item label="完成时间" :label-width="140">
-                <el-input v-model="adCate.finishTime" autocomplete="off" />
+                <el-input v-model="copyright.finishTime" autocomplete="off" />
             </el-form-item>
             <el-form-item label="著作权名称" :label-width="140">
-                <el-input v-model="adCate.name" autocomplete="off" />
+                <el-input v-model="copyright.name" autocomplete="off" />
             </el-form-item>
             <el-form-item label="首次发表时间" :label-width="140">
-                <el-input v-model="adCate.publishTime" autocomplete="off" />
+                <el-input v-model="copyright.publishTime" autocomplete="off" />
             </el-form-item>
             <el-form-item label="著作权人：第一位" :label-width="140"><!-- :label-width="formLabelWidth" -->
-                <el-input v-model="adCate.userId" autocomplete="off" />
+                <el-input v-model="copyright.userId" autocomplete="off" />
             </el-form-item>
         </el-form>
         <template #footer>
@@ -53,9 +53,7 @@
 </template>
 <script>
 import { defineComponent } from 'vue'
-import {copyrightPage,
-    copyrightAdd,
-    copyrightEdit}from'../../http/copyright'
+import { copyrightPage, copyrightAdd, copyrightEdit}from'../../http/copyright'
 import { ElMessage } from 'element-plus';
 import { cloneDeep } from 'lodash-es'
 export default defineComponent({
@@ -82,7 +80,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        this.getAdcatesPage(1)
+        this.getAdcopyrightPage(1)
     },
     methods: {
         toEdit(copyright) {
@@ -91,7 +89,7 @@ export default defineComponent({
             this.copyright = cloneDeep(copyright);
 
         },
-        getAdcatesPage(current) {
+        getAdcopyrightPage(current) {
             const data = {
                 current: current,
                 size: 2
@@ -106,31 +104,11 @@ export default defineComponent({
             })
         },
         currentchange(current) {
-            this.getAdcatesPage(current);
+            this.getAdcopyrightPage(current);
             this.page.current = current;
         },
         cancle() {
             this.dialogFormVisible1 = false
-        },
-        dele() {
-            this.dialogFormVisible1 = true;
-        },
-        del(id) {
-            const params = {
-                id: id
-            }
-            adCateDelId(params).then(res => {
-                if (res.success) {
-                    this.getAdcatesPage(this.page.current)
-                }
-                else {
-                    console.log(res.msg)
-                    return false
-                }
-            }).catch(err => {
-
-            })
-            this.dialogFormVisible1 = false;
         },
         toAdd() {
             //到添加页面
@@ -143,7 +121,7 @@ export default defineComponent({
                     if (res.success) {
                         //刷新页面
                         this.dialogFormVisible = false
-                        this.getAdcatesPage(this.page.current)
+                        this.getAdcopyrightPage(this.page.current)
                         ElMessage(res.msg)
                     }
                     else {
@@ -159,7 +137,7 @@ export default defineComponent({
                     if (res.success) {
                         //刷新页面
                         this.dialogFormVisible = false
-                        this.getAdcatesPage(this.page.current)
+                        this.getAdcopyrightPage(this.page.current)
                         ElMessage(res.msg)
                     }
                     else {
@@ -170,9 +148,9 @@ export default defineComponent({
                     ElMessage('网络错误联系管理员')
                 })
             }
-        },
+        }
 
-    },
+    }
 });
 </script>
 <style lang='scss' scoped></style>
