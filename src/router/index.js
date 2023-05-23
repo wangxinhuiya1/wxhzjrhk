@@ -33,6 +33,9 @@ const routes = [
         path: '/classroom', name: 'classroom', component: () => import('../views/static/classroom.vue') //懒加载 
     },
     {
+        path: '/classinfo', name: 'classinfo', component: () => import('../views/static/classinfo.vue') //懒加载 
+    },
+    {
         path: '/course', name: 'course', component: () => import('../views/static/course.vue') //懒加载 
     },
     {
