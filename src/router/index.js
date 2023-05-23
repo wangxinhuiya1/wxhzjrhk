@@ -27,6 +27,9 @@ const routes = [
         component: () => import('../views/static/adCate.vue')// 懒加载
     },
     {
+        path: '/classroom', name: 'classroom', component: () => import('../views/static/classroom.vue') //懒加载 
+    },
+    {
         path: '/major', name: 'major', component: () => import('../views/admin/major.vue') //懒加载 
     },
     {
