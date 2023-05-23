@@ -31,36 +31,32 @@ const majorEdit = (data) => {
         data
     })
 }
-//以下未实现
-// 按column展示api/major/colums
-const majorColumn = (data) => {
+// 按学院ID展示api/major/getMajorForSelectByDepartId
+const majorSelectByDepartId = (params) => {
     return instance.request({
-        url: 'api/major/colums',
+        url: 'api/major/getMajorForSelectByDepartId',
         params
     })
 }
-// 按学院ID展示api/major/getMajorForSelectByDepartId
-const majorSelectByDepartId = (data) => {
+// 按学院ID查询数据是否存在api/major/getMajorForSelectByDepart
+const majorSelectByDepart = (params) => {
     return instance.request({
-        url: 'api/major/getMajorForSelectByDepartId',
-        method: 'post',
-        data
+        url: 'api/major/getMajorsForSelectByDepart',
+        params
     })
 }
-// 按学院名称展示api/major/getMajorForSelectByDepart
-const majorSelectByDepart = (data) => {
+// 按学校ID寻找数据是否存在api/major/getMajorForSelectBySchoolId
+const majorSelectBySchoolId = (params) => {
     return instance.request({
-        url: 'api/major/getMajorForSelectByDepart',
-        method: 'post',
-        data
+        url: 'api/major/getMajorsForSelectBySchoolId',
+        params
     })
 }
-// 按学校ID展示api/major/getMajorForSelectBySchoolId
-const majorSelectBySchoolId = (data) => {
+// 按ID寻找数据是否存在api/major/getMajorForSelectBySchoolId
+const majorSelectById = (params) => {
     return instance.request({
-        url: 'api/major/getMajorForSelectBySchoolId',
-        method: 'post',
-        data
+        url: 'api/major/one',
+        params
     })
 }
 
@@ -69,8 +65,8 @@ export {
     majorAdd,
     majorEdit,
     majorDelId,
-    majorColumn,
     majorSelectByDepart,
     majorSelectByDepartId,
     majorSelectBySchoolId,
+    majorSelectById,
 } 
