@@ -27,6 +27,11 @@ const routes = [
         component: () => import('../views/static/adCate.vue')// 懒加载
     },
     {
+        path: '/department',
+        name: 'department',
+        component: () => import('@/views/admin/department.vue'), // 懒加载
+      },
+    {
         path: '/major', name: 'major', component: () => import('../views/admin/major.vue') //懒加载 
     },
     {
