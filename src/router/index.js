@@ -58,6 +58,11 @@ const routes = [
         component: () => import('../views/static/login.vue')// 懒加载
     },
     {
+        path: '/paper',
+        name: 'paper',
+        component: () => import('../views/static/paper.vue'), // 懒加载
+      },
+    {
         path: '/admin',
         name: 'admin',
         component: LayoutAdmin,
