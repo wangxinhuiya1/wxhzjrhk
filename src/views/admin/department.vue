@@ -62,7 +62,7 @@
 
 <script>
 import { defineComponent } from "vue"
-import { adTopicPage, adTopicDelId, adTopicAdd, adTopicEdit } from "../../http/deparment";
+import { adTopicPage, adTopicDelId, adTopicAdd, adTopicEdit } from "../../http/department";
 import { ElMessage } from 'element-plus'
 import {cloneDeep} from 'lodash-es'
 export default defineComponent({
