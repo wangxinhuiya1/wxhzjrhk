@@ -27,22 +27,14 @@
       </el-form-item>
       <el-form-item label="所在建筑" :label-width="formLabelWidth">
         <el-select v-model="classroom.building" placeholder="请选择所在建筑">
-          <el-option
-            v-for="building in buildings"
-            :key="building.id"
-            :label="`${building.id}（${building.name}）`"
-            :value="building.id"
-          />
+          <el-option v-for="building in buildings" :key="building.id" :label="`${building.id}（${building.name}）`"
+            :value="building.id" />
         </el-select>
       </el-form-item>
       <el-form-item label="所属学校" :label-width="formLabelWidth">
         <el-select v-model="classroom.school" placeholder="请选择所属学校">
-          <el-option
-            v-for="school in schools"
-            :key="school.id"
-            :label="`${school.id}（${school.schoolName}）`"
-            :value="school.id"
-          />
+          <el-option v-for="school in schools" :key="school.id" :label="`${school.id}（${school.schoolName}）`"
+            :value="school.id" />
         </el-select>
       </el-form-item>
     </el-form>
@@ -104,12 +96,11 @@ export default defineComponent({
         .then(res => {
           console.log(res);
           if (res.success) {
-            const page = res.data;
-            this.classrooms = page.classinfos;
+            this.classrooms = res.data.classrooms; // 修改为 res.data.classrooms
             this.page = {
-              total: page.total,
-              current: page.current,
-              size: page.size
+              total: res.data.classrooms.length, // 修改为 res.data.classrooms.length
+              current: res.data.current,
+              size: res.data.size
             };
           } else {
             console.log(res.msg);
