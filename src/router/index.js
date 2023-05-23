@@ -30,6 +30,9 @@ const routes = [
         path: '/classroom', name: 'classroom', component: () => import('../views/static/classroom.vue') //懒加载 
     },
     {
+        path: '/copyright', name: 'copyright', component: () => import('../views/static/copyright.vue') //懒加载 
+    },
+    {
         path: '/department',
         name: 'department',
         component: () => import('@/views/admin/department.vue'), // 懒加载
