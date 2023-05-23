@@ -26,10 +26,24 @@
         <el-input v-model="classroom.name" autocomplete="off" />
       </el-form-item>
       <el-form-item label="所在建筑" :label-width="formLabelWidth">
-        <el-input v-model="classroom.building" autocomplete="off" />
+        <el-select v-model="classroom.building" placeholder="请选择所在建筑">
+          <el-option
+            v-for="building in buildings"
+            :key="building.id"
+            :label="`${building.id}（${building.name}）`"
+            :value="building.id"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item label="所属学校" :label-width="formLabelWidth">
-        <el-input v-model="classroom.school" autocomplete="off" />
+        <el-select v-model="classroom.school" placeholder="请选择所属学校">
+          <el-option
+            v-for="school in schools"
+            :key="school.id"
+            :label="`${school.id}（${school.schoolName}）`"
+            :value="school.id"
+          />
+        </el-select>
       </el-form-item>
     </el-form>
     <template #footer>
@@ -44,7 +58,7 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElMessage } from 'element-plus';
-import { addClassroom, getAllClassrooms, deleteClassroom, editClassroom, getOneClassroom } from '../../http/classroom';
+import { addClassroom, getAllClassrooms, deleteClassroom, editClassroom, getOneClassroom, getAllBuilding, getAllSchool } from '../../http/classroom';
 import { cloneDeep } from 'lodash-es';
 
 export default defineComponent({
@@ -64,11 +78,15 @@ export default defineComponent({
         school: ''
       },
       formLabelWidth: 80,
-      searchId: '' // 添加搜索框的绑定值
-    }
+      searchId: '', // 添加搜索框的绑定值
+      buildings: [], // 存储所有建筑的数据
+      schools: [] // 存储所有学校的数据
+    };
   },
   mounted() {
     this.getClassroomsPage(1);
+    this.getAllBuildingData();
+    this.getAllSchoolData();
   },
   methods: {
     toEdit(classroom) {
@@ -182,20 +200,44 @@ export default defineComponent({
             this.page = {
               total: 1,
               current: 1,
-              size: 1
+              size: this.page.size
             };
           } else {
             ElMessage.error(res.msg);
           }
         })
         .catch(err => {
-          console.log('Error while searching classroom:', err);
           ElMessage.error('网络错误，请联系管理员');
         });
-
+    },
+    getAllBuildingData() {
+      getAllBuilding()
+        .then(res => {
+          console.log(res);
+          if (res.success) {
+            this.buildings = res.data.buildings; // 将建筑数据存储到buildings数组中
+          } else {
+            console.log(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getAllSchoolData() {
+      getAllSchool()
+        .then(res => {
+          console.log(res);
+          if (res.success) {
+            this.schools = res.data.schools; // 将学校数据存储到schools数组中
+          } else {
+            console.log(res.msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 });
 </script>
-
-<style lang="scss" scoped></style>
