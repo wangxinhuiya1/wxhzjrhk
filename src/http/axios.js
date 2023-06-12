@@ -12,7 +12,7 @@ instance.interceptors.request.use((config)=>{
     showLoading()
     const userStore=useUserStore();
     const {token}=userStore;
-    // console.log(token);
+     console.log(token);
     config.headers.token=token;
     return config
 },(err)=>{

@@ -5,7 +5,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // 通过export 输出
 // 如何使用
 // export default 默认输出
-import Index from '@/views/static/index.vue'
+import Index from '@/views/static/login.vue'
 import LayoutAdmin from '@/layout/admin/index.vue'
 //白名单
 const whiteList = [
@@ -30,7 +30,13 @@ const routes = [
         path: '/memorabilia', name: 'memorabilia', component: () => import('../views/admin/memorabilia.vue') //懒加载 
     },
     {
-        path: '/articlecat', name: 'articlecat', component: () => import('../views/static/articlecat.vue') //懒加载 
+        path: '/file', name: 'file', component: () => import('../views/static/file.vue') //懒加载 
+    },
+    {
+        path: '/page', name: 'page', component: () => import('../views/static/page.vue') //懒加载 
+    },
+    {
+        path: '/folder', name: 'folder', component: () => import('../views/static/folder.vue') //懒加载 
     },
     {
         path: '/classroom', name: 'classroom', component: () => import('../views/static/classroom.vue') //懒加载 

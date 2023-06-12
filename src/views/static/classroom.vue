@@ -201,6 +201,8 @@ export default defineComponent({
           ElMessage.error('网络错误，请联系管理员');
         });
     },
+
+    
     getAllBuildingData() {
       getAllBuilding()
         .then(res => {

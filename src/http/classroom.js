@@ -1,26 +1,8 @@
 import instance from "./axios";
 
-// 用户登录接口
-const userLogin = (data) => {
-  return instance.request({
-    url: 'api/mobile/elogin',
-    method: 'post',
-    data,
-    headers: {}
-  });
-};
-
-// 管理员登录接口
-const adminLogin2 = function(data) {
-  return instance.request({
-    url: '', // 添加实际的URL
-    method: 'post',
-    data
-  });
-};
 
 // 添加教室接口
-const addClassroom = (data) => {
+const addFile = (data) => {
   return instance.request({
     url: "api/classroom/add",
     method: "post",
@@ -29,35 +11,35 @@ const addClassroom = (data) => {
 };
 
 // 获取所有教室接口
-const getAllClassrooms = () => {
+const getAllFile = () => {
   return instance.request({
-    url: "api/classroom/all",
+    url: "/api/file-info/all",
     method: "get",
   });
 };
 
 // 删除教室接口
-const deleteClassroom = (params) => {
+const deleteFile = (params) => {
   return instance.request({
-    url: "api/classroom/delete",
+    url: "/api/file-info/delete",
     method: "get",
     params
   });
 };
 
 // 编辑教室接口
-const editClassroom = (data) => {
+const editFile = (data) => {
   return instance.request({
-    url: "api/classroom/edit",
+    url: "/api/file-info/edit",
     method: "post",
     data
   });
 };
 
 // 获取单个教室接口
-const getOneClassroom = (id) => {
+const getOneFile = (id) => {
   return instance.request({
-    url: "api/classroom/one",
+    url: "/api/file-info/one/{id}",
     method: "get",
     params: {
       id: id,
@@ -66,31 +48,12 @@ const getOneClassroom = (id) => {
 };
 
 
-// 获取所有建筑接口
-const getAllBuilding = () => {
-  return instance.request({
-    url: "api/building/all",
-    method: "get",
-  });
-};
-
-// 获取所有学校接口
-const getAllSchool = () => {
-  return instance.request({
-    url: "api/school/all",
-    method: "get",
-  });
-};
 
 
 export {
-  userLogin,
-  adminLogin2,
-  addClassroom,
-  getAllClassrooms,
-  deleteClassroom,
-  editClassroom,
-  getOneClassroom,
-  getAllBuilding,
-  getAllSchool,
+  getOneFile,
+  editFile,
+  deleteFile,
+  getAllFile,
+  addFile,
 };

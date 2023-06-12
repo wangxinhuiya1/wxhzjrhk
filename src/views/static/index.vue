@@ -52,6 +52,8 @@ export default defineComponent({
     mounted() {
         // this.increate();
         // this.sum();
+        
+
 
     },
     methods: {
